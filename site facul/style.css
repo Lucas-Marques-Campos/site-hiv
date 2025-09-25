@@ -1,0 +1,438 @@
+/* --- RESET BÁSICO E CONFIGURAÇÕES GERAIS --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Definimos a fonte base para 62.5%. 
+  Isso faz com que 1rem = 10px (16px * 0.625 = 10px).
+  Facilita a conversão: 1.6rem = 16px, 2.4rem = 24px, etc.
+*/
+html {
+    font-size: 62.5%;
+}
+
+:root {
+    --primary-red: #D92E26;
+    --dark-text: #333333;
+    --light-text: #666666;
+    --white: #FFFFFF;
+    --light-grey-bg: #f7f7f7;
+    --border-color: #e0e0e0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--dark-text);
+    background: linear-gradient(180deg, #EAEAEA 0%, #FFFFFF 100%);
+    line-height: 1.6;
+    font-size: 1.6rem; /* Tamanho de fonte padrão para o corpo (equivale a 16px) */
+}
+
+.container {
+    width: 90%;
+    max-width: 120rem; /* 1200px */
+    margin: 0 auto;
+}
+
+/* --- ESTRUTURA PRINCIPAL --- */
+.page-wrapper {
+    background-color: var(--white);
+    margin: 4rem auto;
+    border-radius: 1.2rem;
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+}
+
+/* --- CABEÇALHO (HEADER) - Estilos Mobile-First --- */
+header {
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.header-container {
+    display: flex;
+    flex-direction: column; /* Empilha os itens no mobile */
+    align-items: center;
+    gap: 2rem;
+}
+
+.logo img {
+    height: 8rem; /* Usei rem para consistência global */
+    width: auto;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column; /* Empilha os links no mobile */
+    align-items: center;
+    gap: 2rem;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--dark-text);
+    font-weight: 600;
+    font-size: 1.6rem;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--primary-red);
+}
+
+.cta-button {
+    background-color: var(--primary-red);
+    color: var(--white);
+    padding: 1.2rem 2.4rem;
+    border-radius: 0.8rem;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    text-align: center;
+}
+
+.cta-button:hover {
+    background-color: #b0241d;
+}
+
+/* --- SEÇÃO HERÓI --- */
+.hero {
+    text-align: center;
+    padding: 6rem 0;
+}
+
+.hero h1 {
+    font-size: 3.6rem; /* Tamanho menor para mobile */
+    margin-bottom: 2rem;
+}
+
+.hero p {
+    font-size: 1.8rem;
+    color: var(--light-text);
+}
+
+/* --- SEÇÃO DE CARDS DE INFORMAÇÃO --- */
+.info-cards {
+    padding: 6rem 0;
+    background-color: var(--light-grey-bg);
+}
+
+.info-cards h2 {
+    text-align: center;
+    margin-bottom: 4rem;
+    font-size: 3.2rem;
+}
+
+.cards-container {
+    display: grid;
+    grid-template-columns: 1fr; /* Uma coluna no mobile */
+    gap: 3rem;
+}
+
+.card {
+    background-color: var(--white);
+    padding: 3rem;
+    border-radius: 1.2rem;
+    text-align: center;
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-0.5rem);
+    box-shadow: 0 0.8rem 2rem rgba(0,0,0,0.07);
+}
+
+.card i {
+    font-size: 4rem;
+    color: var(--primary-red);
+    margin-bottom: 2rem;
+}
+
+.card h3 {
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+/* --- NOVOS ESTILOS PARA O MENU HAMBÚRGUER --- */
+
+.hamburger {
+    display: block; /* Visível por padrão (mobile-first) */
+    font-size: 2.4rem;
+    color: var(--dark-text);
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1000; /* Garante que fique na frente */
+}
+
+/* Esconde o menu de navegação por padrão no mobile */
+.nav-links-wrapper {
+    display: none; 
+}
+
+/* Estilo para quando o menu está ativo (aberto via JS) */
+.nav-links-wrapper.active {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 8.5rem; /* Ajuste conforme a altura do seu header */
+    right: 0;
+    width: 100%;
+    background-color: var(--white);
+    padding: 2rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    align-items: center;
+    gap: 2rem;
+}
+
+/* --- SEÇÃO DE TESTAGEM E TRATAMENTO --- */
+.testing-treatment {
+    padding: 6rem 0;
+}
+
+.testing-container {
+    display: grid;
+    grid-template-columns: 1fr; /* Uma coluna no mobile */
+    gap: 4rem;
+    align-items: center;
+}
+
+.testing-box h3, .treatment-box h2 {
+    font-size: 3.2rem;
+    margin-bottom: 1.5rem;
+    color: var(--primary-red);
+}
+
+.testing-box p, .treatment-box p {
+    margin-bottom: 2.5rem;
+    color: var(--light-text);
+}
+
+.search-form {
+    display: flex;
+    flex-direction: column; /* Empilha no mobile */
+    gap: 1rem;
+}
+
+.search-form input {
+    width: 100%;
+    padding: 1.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.8rem;
+    font-size: 1.6rem;
+}
+
+.search-form button {
+    padding: 1.5rem 2.5rem;
+    border: none;
+    background-color: var(--primary-red);
+    color: var(--white);
+    border-radius: 0.8rem;
+    cursor: pointer;
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+.treatment-box {
+    text-align: center;
+    background-color: var(--light-grey-bg);
+    padding: 4rem;
+    border-radius: 1.2rem;
+}
+
+.treatment-box p {
+    font-size: 1.8rem;
+}
+
+/* --- SEÇÃO DE DÚVIDAS (FAQ) --- */
+.faq {
+    padding: 6rem 0;
+    background-color: var(--light-grey-bg);
+    text-align: center;
+}
+
+.faq h2 {
+    font-size: 3.2rem;
+    margin-bottom: 1rem;
+}
+
+.faq > .container > p {
+    color: var(--light-text);
+    margin-bottom: 3rem;
+}
+
+.faq form {
+    max-width: 70rem;
+    margin: 0 auto;
+}
+
+.faq textarea {
+    width: 100%;
+    height: 12rem;
+    padding: 1.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.8rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.6rem;
+    margin-bottom: 2rem;
+    resize: vertical;
+}
+
+.faq button {
+    background-color: var(--primary-red);
+    color: var(--white);
+    padding: 1.5rem 4rem;
+    border-radius: 0.8rem;
+    text-decoration: none;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    font-size: 1.6rem;
+}
+
+.disclaimer {
+    margin-top: 2rem;
+    font-size: 1.4rem;
+    color: #999;
+}
+
+/* --- RODAPÉ (FOOTER) --- */
+footer {
+    padding: 5rem 0;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: 1fr; /* Uma coluna no mobile */
+    gap: 3rem;
+    text-align: center;
+}
+
+.footer-column h4 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.footer-column p {
+    color: var(--light-text);
+    margin-bottom: 1rem;
+}
+
+.social-icons a {
+    color: var(--dark-text);
+    font-size: 2.4rem;
+    margin: 0 0.75rem;
+    text-decoration: none;
+}
+
+/* --- MEDIA QUERIES PARA RESPONSIVIDADE --- */
+
+/* Estilos para Tablets (a partir de 768px) */
+@media (min-width: 768px) {
+    .header-container {
+        flex-direction: row; /* Volta para o layout em linha */
+    }
+
+    nav ul {
+        flex-direction: row; /* Links em linha */
+        gap: 2rem;
+    }
+
+    .hero h1 {
+        font-size: 4.2rem;
+    }
+
+    .cards-container {
+        grid-template-columns: repeat(2, 1fr); /* Duas colunas */
+    }
+    
+    .search-form {
+        flex-direction: row; /* Input e botão em linha */
+        gap: 0;
+    }
+
+    .search-form input {
+        border-radius: 0.8rem 0 0 0.8rem;
+    }
+    
+    .search-form button {
+        border-radius: 0 0.8rem 0.8rem 0;
+    }
+
+    .footer-container {
+        grid-template-columns: repeat(3, 1fr); /* Três colunas */
+        text-align: left;
+    }
+    /* Estilos para Tablets (a partir de 768px) */
+@media (min-width: 768px) {
+    .header-container {
+        flex-direction: row; /* Volta para o layout em linha */
+    }
+
+    /* NOVO: Esconde o botão hambúrguer em telas maiores */
+    .hamburger {
+        display: none;
+    }
+
+    /* NOVO: Mostra a navegação e a estiliza em linha */
+    .nav-links-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 3rem; /* Espaçamento entre a nav e o botão CTA */
+    }
+
+    nav ul {
+        flex-direction: row; /* Links em linha */
+        gap: 2rem;
+    }
+    
+    /* ... (o resto do seu código @media para tablets continua aqui) ... */
+    .hero h1 {
+        font-size: 4.2rem;
+    }
+
+    .cards-container {
+        grid-template-columns: repeat(2, 1fr); /* Duas colunas */
+    }
+    
+    .search-form {
+        flex-direction: row; /* Input e botão em linha */
+        gap: 0;
+    }
+
+    .search-form input {
+        border-radius: 0.8rem 0 0 0.8rem;
+    }
+    
+    .search-form button {
+        border-radius: 0 0.8rem 0.8rem 0;
+    }
+
+    .footer-container {
+        grid-template-columns: repeat(3, 1fr); /* Três colunas */
+        text-align: left;
+    }
+}
+}
+
+/* Estilos para Desktops (a partir de 1024px) */
+@media (min-width: 1024px) {
+    nav ul {
+        gap: 3rem; /* Aumenta o espaçamento no desktop */
+    }
+
+    .hero h1 {
+        font-size: 4.8rem;
+    }
+
+    .cards-container {
+        grid-template-columns: repeat(4, 1fr); /* Quatro colunas */
+    }
+
+    .testing-container {
+        grid-template-columns: 1fr 1fr; /* Duas colunas */
+    }
+}
